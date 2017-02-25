@@ -3,6 +3,7 @@ import React from "react";
 
 // Import Spectacle Core tags
 import {
+  Appear,
   BlockQuote,
   Cite,
   Deck,
@@ -19,6 +20,8 @@ import preloader from "spectacle/lib/utils/preloader";
 
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
+
+import SurpriseHeader from "./SurpriseHeader";
 
 // Require CSS
 require("normalize.css");
@@ -44,43 +47,35 @@ const theme = createTheme({
   secondary: "Helvetica"
 });
 
-export default class Presentation extends React.Component {
-  render() {
-    return (
-      <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme}>
-        <Slide transition={["zoom"]} bgColor="primary">
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Spectacle Boilerplate
-          </Heading>
-          <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-            open the presentation/index.js file to get started
-          </Text>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>Typography</Heading>
-          <Heading size={1} textColor="secondary">Heading 1</Heading>
-          <Heading size={2} textColor="secondary">Heading 2</Heading>
-          <Heading size={3} textColor="secondary">Heading 3</Heading>
-          <Heading size={4} textColor="secondary">Heading 4</Heading>
-          <Heading size={5} textColor="secondary">Heading 5</Heading>
-          <Text size={6} textColor="secondary">Standard text</Text>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>Standard List</Heading>
-          <List>
-            <ListItem>Item 1</ListItem>
-            <ListItem>Item 2</ListItem>
-            <ListItem>Item 3</ListItem>
-            <ListItem>Item 4</ListItem>
-          </List>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
-          <BlockQuote>
-            <Quote>Example Quote</Quote>
-            <Cite>Author</Cite>
-          </BlockQuote>
-        </Slide>
-      </Deck>
-    );
-  }
-}
+
+
+const Presentation = () =>
+  <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme}>
+    <Slide bgColor="primary">
+      <Heading size={1} fit caps lineHeight={1} textColor="secondary">webpack 2</Heading>
+      <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>Verktøyet over alle verktøy</Text>
+    </Slide>
+
+    <Slide transition={["fade"]} bgColor="tertiary">
+      <Heading size={4} textColor="secondary">Static stuff "through the ages"</Heading>
+      <List>
+        <Appear><ListItem>Ingen bundling</ListItem></Appear>
+        <Appear><ListItem>Shell-skript</ListItem></Appear>
+        <Appear><ListItem>grunt, gulp</ListItem></Appear>
+      </List>
+    </Slide>
+
+    <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+      <BlockQuote>
+        <Quote>if you can't do without tools you are not a web developer</Quote>
+        <Cite>Peter-Paul Koch</Cite>
+      </BlockQuote>
+    </Slide>
+
+    <Slide>
+      <SurpriseHeader />
+    </Slide>
+
+  </Deck>;
+
+export default Presentation;
