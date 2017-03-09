@@ -5,22 +5,25 @@ import styled from "styled-components";
 import { withState, compose, lifecycle } from "recompose";
 
 const AnimatedSpan = styled.span`
+  display: inline-block;
+  color: goldenrod;
   opacity: ${({ show }) => show ? 1 : 0};
-  transition: opacity 0.8s;
+  width: ${({ show }) => show ? "9rem" : 0};
+  transition: opacity 0.3s, width 0.7s;
 `;
 
 const enhance = compose(
   withState("showSpan", "setShowSpan", false),
   lifecycle({
     componentDidMount() {
-      setTimeout(() => this.props.setShowSpan(true), 2000);
+      setTimeout(() => this.props.setShowSpan(true), 1500);
     }
   })
 );
 
 const SurpriseHeader = enhance(({ showSpan }) =>
   <div>
-    <Heading >webpack {<AnimatedSpan show={showSpan}>(2)</AnimatedSpan>} 101</Heading>
+    <Heading>webpack <AnimatedSpan show={showSpan}>(2)</AnimatedSpan> 101</Heading>
   </div>
 );
 

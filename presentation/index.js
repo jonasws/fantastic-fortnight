@@ -50,7 +50,7 @@ const theme = createTheme({
 
 
 const Presentation = () =>
-  <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme}>
+  <Deck transition={["zoom", "slide"]} transitionDuration={600} theme={theme}>
     <Slide bgColor="primary">
       <Heading size={1} fit caps lineHeight={1} textColor="secondary">webpack 2</Heading>
       <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>Verktøyet over alle verktøy</Text>
@@ -72,10 +72,13 @@ const Presentation = () =>
       </BlockQuote>
     </Slide>
 
-    <Slide>
+    <Slide transiton={["slide"]}>
       <SurpriseHeader />
     </Slide>
 
+    <Slide>
+      <Text>Ymse => JavaScript => Ymse</Text>
+    </Slide>
   </Deck>;
 
 export default Presentation;
