@@ -20,51 +20,82 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin()
   ],
   module: {
-    loaders: [{
-      test: /\.md$/,
-      loader: "html-loader!markdown-loader?gfm=false"
-    }, {
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      loader: "babel-loader",
-      query: {
-        plugins: [
-          [
-            "react-transform", {
-              transforms: [{
-                transform: "react-transform-hmr",
-                imports: ["react"],
-                locals: ["module"]
-              }, {
-                transform: "react-transform-catch-errors",
-                imports: ["react", "redbox-react"]
-              }]
+    rules: [
+      {
+        test: /\.md$/,
+        use: [
+          {
+            loader: "html-loader"
+          },
+          {
+            loader: "markdown-loader",
+            options: {
+              gfm: false
             }
-          ]
+          }
         ]
       },
-      exclude: /node_modules/,
-      include: __dirname
-    }, {
-      test: /\.css$/,
-      loaders: ["style-loader", "raw-loader"],
-      include: __dirname
-    }, {
-      test: /\.svg$/,
-      loader: "url-loader?limit=10000&mimetype=image/svg+xml",
-      include: path.join(__dirname, "assets")
-    }, {
-      test: /\.png$/,
-      loader: "url-loader?mimetype=image/png",
-      include: path.join(__dirname, "assets")
-    }, {
-      test: /\.gif$/,
-      loader: "url-loader?mimetype=image/gif",
-      include: path.join(__dirname, "assets")
-    }, {
-      test: /\.jpg$/,
-      loader: "url-loader?mimetype=image/jpg",
-      include: path.join(__dirname, "assets")
-    }]
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        options: {
+          plugins: [
+            [
+              "react-transform", {
+                transforms: [{
+                  transform: "react-transform-hmr",
+                  imports: ["react"],
+                  locals: ["module"]
+                }, {
+                  transform: "react-transform-catch-errors",
+                  imports: ["react", "redbox-react"]
+                }]
+              }
+            ]
+          ]
+        }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          "raw-loader"
+        ]
+      },
+      {
+        test: /\.svg$/,
+        loader: "url-loader",
+        options: {
+          limit: 1000,
+          mimetype: "image/svg+xml"
+        },
+        include: path.join(__dirname, "assets")
+      },
+      {
+        test: /\.png$/,
+        loader: "url-loader",
+        options: {
+          mimetype: "image/png"
+        },
+        include: path.join(__dirname, "assets")
+      },
+      {
+        test: /\.gif$/,
+        loader: "url-loader",
+        options: {
+          mimetype: "image/gif"
+        },
+        include: path.join(__dirname, "assets")
+      },
+      {
+        test: /\.jpg$/,
+        loader: "url-loader",
+        options: {
+          mimetype: "image/jpg"
+        },
+        include: path.join(__dirname, "assets")
+      },
+    ]
   }
 };
