@@ -22,9 +22,7 @@ const enhance = compose(
 );
 
 const SurpriseHeader = enhance(({ showSpan }) =>
-  <div>
-    <Heading>webpack <AnimatedSpan show={showSpan}>(2)</AnimatedSpan> 101</Heading>
-  </div>
+  <Heading>webpack <AnimatedSpan show={showSpan}>(2)</AnimatedSpan> 101</Heading>
 );
 
 export default SurpriseHeader;
