@@ -1,7 +1,7 @@
 {
   "name": "weback2-presentation",
   "version": "1.0.0",
-  "description": "A set of slides used for a presentation on webpack 2, originally held at Capra Consulting AS",
+  "description": "A set of slides used for a presentation on webpack 2",
   "private": true,
   "main": "lib/index.js",
   "scripts": {
