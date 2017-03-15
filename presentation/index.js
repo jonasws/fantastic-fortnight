@@ -6,6 +6,7 @@ import {
   Appear,
   BlockQuote,
   Cite,
+  CodePane,
   Deck,
   Heading,
   ListItem,
@@ -16,26 +17,27 @@ import {
 } from "spectacle";
 
 // Import image preloader util
-import preloader from "spectacle/lib/utils/preloader";
+/* import preloader from "spectacle/lib/utils/preloader";*/
 
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
 
-import SurpriseHeader from "./SurpriseHeader";
+import SurpriseHeader from "./surprise-header";
+import { DiscoHeading } from "./disco-slide";
 
 // Require CSS
 require("normalize.css");
 require("spectacle/lib/themes/default/index.css");
 
 
-const images = {
-  city: require("../assets/city.jpg"),
-  kat: require("../assets/kat.png"),
-  logo: require("../assets/formidable-logo.svg"),
-  markdown: require("../assets/markdown.png")
-};
-
-preloader(images);
+/* const images = {
+ *   city: require("../assets/city.jpg"),
+ *   kat: require("../assets/kat.png"),
+ *   logo: require("../assets/formidable-logo.svg"),
+ *   markdown: require("../assets/markdown.png")
+ * };
+ *
+ * preloader(images);*/
 
 const theme = createTheme({
   primary: "white",
@@ -46,7 +48,6 @@ const theme = createTheme({
   primary: "Montserrat",
   secondary: "Helvetica"
 });
-
 
 
 const Presentation = () =>
@@ -78,6 +79,76 @@ const Presentation = () =>
 
     <Slide>
       <Text>Ymse => JavaScript => Ymse</Text>
+    </Slide>
+
+    <Slide>
+      <List>
+        <ListItem>Entry</ListItem>
+        <ListItem>Output</ListItem>
+        <ListItem>Loaders</ListItem>
+        <Appear>
+          <ListItem>(Plugins)</ListItem>
+        </Appear>
+      </List>
+    </Slide>
+
+    <Slide>
+      <CodePane textSize="2rem" lang="js" source={require("raw-loader!./examples/entry.js.example")}/>
+    </Slide>
+
+    <Slide>
+      <CodePane textSize="2rem" lang="js" source={require("raw-loader!./examples/output.js.example")}/>
+    </Slide>
+
+    <Slide align="flex-start">
+      <CodePane style={{ overflowY: "scroll", maxHeight: "100%" }} textSize="1.3rem" lang="js" source={require("raw-loader!./examples/loaders.js.example")}/>
+    </Slide>
+
+    <Slide align="flex-start">
+      <CodePane style={{ overflowY: "scroll", maxHeight: "100%" }} textSize="1.3rem" lang="js" source={require("raw-loader!./examples/rules.js.example")}/>
+    </Slide>
+
+    <Slide bgColor="secondary">
+      <Heading textColor="primary" lineHeight={1.5}>"Building for production"</Heading>
+    </Slide>
+
+    <Slide>
+      <Heading size={3}>ExtractTextWebpackPlugin</Heading>
+      <Text margin="2rem">Putter all css i en egen fil</Text>
+    </Slide>
+
+    <Slide transition={[]}>
+      <DiscoHeading>Code splitting</DiscoHeading>
+    </Slide>
+
+    <Slide>
+      <List>
+        <ListItem>"Lazy loading" på frontend</ListItem>
+        <ListItem>Utnytter asynkroniteten i nettleserne</ListItem>
+        <ListItem>Kan forbedre lasttid i komplekse applikasjoner</ListItem>
+      </List>
+    </Slide>
+
+    <Slide>
+      <Heading size={2}>import-funksjonen</Heading>
+      <List>
+        <ListItem>Returnerer et promise som resolver til den gitte modulen</ListItem>
+        <Appear>
+          <ListItem>Går superbra i hånd med async + await!</ListItem>
+        </Appear>
+      </List>
+    </Slide>
+
+    <Slide>
+      <CodePane textSize="2rem" lang="js" source={require("raw-loader!./examples/import-function.js.example")}/>
+    </Slide>
+
+    <Slide>
+      <Heading size={2}>Tree shaking</Heading>
+    </Slide>
+
+    <Slide bgColor="secondary">
+      <Heading textColor="primary">Spørsmål?</Heading>
     </Slide>
   </Deck>;
 
